@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+          <p>Final Inspection</p>
+        </div>
+    
+        <div class="panel body">
+          <div class="panel panel-primary" style="max-width: 800px; margin: 20px;" *ngFor="let ans of quizExamfinalinspection">
+            <div class="panel-heading">
+              <p>{{ ans.question }}</p>
+            </div>
+            <div class="panel-body">
+              <div class="panel-container" *ngFor="let a of ans.answer; let i = index">
+                <input type="radio" [name]="ans.questionno" (change)="onRadioChange(ans.answer[i])"> {{ a.answer }} <br>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" (click)="submit()" style="margin: 20px;">Submit</button>
+        </div>
+      </div>
+</div>
+
