@@ -7,14 +7,19 @@ import { QuizmanagementComponent } from './quiz/quizmanagement/quizmanagement.co
 import { QuizauthenComponent } from './quiz/quizauthen/quizauthen.component';
 import { QuizProcessComponent } from './quiz/quiz-process/quiz-process.component';
 
+import { AuthGuard } from './_guards/auth.guard';
+
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/mainpage', pathMatch: 'full' },
-    { path: 'mainpage', component: MainpageComponent },
+    // { path: '', redirectTo: '/mainpage', pathMatch: 'full', canActivate: [AuthGuard] },
+    // { path: 'mainpage', component: MainpageComponent },
+    { path: '', component: MainpageComponent, canActivate: [AuthGuard] },
     { path: 'getsybaseemployee', component: GetsybaseemployeeComponent },
     { path: 'quizauthen', component: QuizauthenComponent },
     { path: 'quizmgnt', component: QuizmanagementComponent },
     { path: 'quizmgnt/:username/:section', component: QuizmanagementComponent },
     { path: 'quizprocess', component: QuizProcessComponent },
+
+    { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
