@@ -9,20 +9,24 @@ import { AppRoutingModule } from './app.router';
 import { AuthenticationService } from './_services/authentication.service';
 import { GetsybaseemployeeComponent } from './administrator/getsybaseemployee/getsybaseemployee.component';
 import { QuizmanagementComponent } from './quiz/quizmanagement/quizmanagement.component';
-import { QuizauthenComponent } from './quiz/quizauthen/quizauthen.component';
 import { HeaderComponent } from './header/header/header.component';
 import { MainpageComponent } from './main/mainpage/mainpage.component';
 import { QuizProcessComponent } from './quiz/quiz-process/quiz-process.component';
+import { AuthenComponent } from './authentication/authen/authen.component';
+import { AboutComponent } from './main/about/about.component';
+import { ContactComponent } from './main/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetsybaseemployeeComponent,
     QuizmanagementComponent,
-    QuizauthenComponent,
     HeaderComponent,
     MainpageComponent,
-    QuizProcessComponent
+    QuizProcessComponent,
+    AuthenComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

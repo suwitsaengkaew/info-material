@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.Isloginvalid = false;
     this.authenticationService.logout();
-    this.router.navigate(['/quizauthen']);
+    this.router.navigate(['/authen']);
   }
 
   login() {

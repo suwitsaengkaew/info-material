@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { map, merge, mergeMap } from 'rxjs/operators';
 import { User } from '../_models/user';
 import { UserData } from '../_data/user.data';
 
@@ -24,11 +23,14 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     return this.user.filter(authenuser => {
+        // console.log(authenuser);
         if (authenuser.username === username && authenuser.password === password) {
           localStorage.setItem('currentUser', JSON.stringify(authenuser));
           this.currentUserSubject.next(authenuser);
           console.log(authenuser);
           return authenuser;
+        } else {
+          return null;
         }
       });
 

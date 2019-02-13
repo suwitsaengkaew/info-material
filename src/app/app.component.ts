@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
 
-export interface Section {
-  name: string;
-  updated: Date;
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

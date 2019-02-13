@@ -1,38 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { UsernameModel } from '../quiz-master/quiz.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../_services/authentication.service';
-import { first } from 'rxjs/operators';
-import { pipe } from 'rxjs';
 
 @Component({
-  selector: 'app-quizauthen',
-  templateUrl: './quizauthen.component.html',
-  styleUrls: ['./quizauthen.component.css']
+  selector: 'app-authen',
+  templateUrl: './authen.component.html',
+  styleUrls: ['./authen.component.css']
 })
-export class QuizauthenComponent implements OnInit {
+export class AuthenComponent implements OnInit {
 
   constructor(
     private router: Router,
     private activateRoute: ActivatedRoute,
     private authenticationService: AuthenticationService
-    ) {
-      if (this.authenticationService.currentUserValue) {
-        this.router.navigate(['/']);
-      }
-     }
+  ) {
+    if (this.authenticationService.currentUserValue) {
+      this.router.navigate(['/']);
+    }
+  }
 
   SigninGroup: FormGroup;
-  loading =  false;
+  loading = false;
   submitted = false;
   returnUrl: String;
-
-  username: UsernameModel[] = [
-    {username: 'suwit', password: 'password', section: 'IT'},
-    {username: 'kessarin', password: 'password' , section: 'IT'},
-    {username: 'nuttida', password: 'password' , section: 'QA'},
-  ];
 
   ngOnInit() {
     this.OnformInit();
@@ -51,20 +42,21 @@ export class QuizauthenComponent implements OnInit {
     this.loading = true;
     const username = this.SigninGroup.value['username'];
     const password = this.SigninGroup.value['password'];
-    // for (let i = 0; i < this.username.length; i++) {
-    //   if ((username === this.username[i].username) && (password === this.username[i].password)) {
-    //     this.router.navigate(['/quizmgnt', this.username[i].username, this.username[i].section]);
-    //   }
-    // }
-    this.authenticationService.login(username, password)
-    .map(
-      data => {
-        this.router.navigate([this.returnUrl]);
-      },
-      error => {
-        this.loading = false;
-      }
-    );
+
+    setTimeout(() => {
+      this.authenticationService.login(username, password)
+        .map(
+          data => {
+            this.router.navigate([this.returnUrl]);
+            console.log(data);
+          },
+          error => {
+            console.log(error);
+            this.loading = false;
+          }
+        );
+    }, 3000);
+
   }
 
   private OnformInit() {

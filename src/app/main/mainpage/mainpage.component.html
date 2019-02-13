@@ -5,3 +5,8 @@
 <p>
   <button class="btn btn-danger" (click)="callservice()">click me</button>
 </p>
+<div *ngIf="currentUserValue">
+  <p>{{ currentUserValue.firstName }}</p>
+  <p>{{ currentUserValue.lastName }}</p>
+  <p>{{ currentUserValue.section }}</p>
+</div>
